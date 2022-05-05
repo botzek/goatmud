@@ -1,6 +1,6 @@
-(ns goatmud.asdf.test-utils
+(ns goatmud.test-utils
   (:require
-    [goatmud.asdf.core :as core]
+    [goatmud.core :as core]
     [integrant.repl.state :as state]))
 
 (defn system-state 

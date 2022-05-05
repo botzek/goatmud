@@ -8,8 +8,8 @@ RUN clj -Sforce -T:build all
 
 FROM azul/zulu-openjdk-alpine:17
 
-COPY --from=build /target/goatmud.asdf-standalone.jar /goatmud.asdf/goatmud.asdf-standalone.jar
+COPY --from=build /target/goatmud-standalone.jar /goatmud/goatmud-standalone.jar
 
 EXPOSE $PORT
 
-ENTRYPOINT exec java $JAVA_OPTS -jar /goatmud.asdf/goatmud.asdf-standalone.jar
+ENTRYPOINT exec java $JAVA_OPTS -jar /goatmud/goatmud-standalone.jar

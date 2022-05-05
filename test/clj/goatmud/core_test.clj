@@ -1,6 +1,6 @@
-(ns goatmud.asdf.core-test
+(ns goatmud.core-test
   (:require
-    [goatmud.asdf.test-utils :as utils]
+    [goatmud.test-utils :as utils]
     [clojure.test :refer :all]))
 
 (deftest example-test

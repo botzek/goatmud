@@ -23,7 +23,7 @@
                                       :keywordize true}
                           :cookies   true
                           :session   {:flash true
-                                      :cookie-name "goatmud.asdf"
+                                      :cookie-name "goatmud"
                                       :cookie-attrs {:max-age     86400
                                                      :http-only   true
                                                      :same-site   :strict}}

@@ -1,7 +1,7 @@
-(ns goatmud.asdf.env
+(ns goatmud.env
   (:require
     [clojure.tools.logging :as log]
-    [goatmud.asdf.dev-middleware :refer [wrap-dev]]))
+    [goatmud.dev-middleware :refer [wrap-dev]]))
 
 (def defaults
   {:init       (fn []

@@ -1,6 +1,6 @@
-(ns goatmud.asdf.web.handler
+(ns goatmud.web.handler
   (:require
-    [goatmud.asdf.web.middleware.core :as middleware]
+    [goatmud.web.middleware.core :as middleware]
     [integrant.core :as ig]
     [reitit.ring :as ring]
     [reitit.swagger-ui :as swagger-ui]))

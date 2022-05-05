@@ -1,8 +1,8 @@
-(ns goatmud.asdf.web.routes.api
+(ns goatmud.web.routes.api
   (:require
-    [goatmud.asdf.web.controllers.health :as health]
-    [goatmud.asdf.web.middleware.exception :as exception]
-    [goatmud.asdf.web.middleware.formats :as formats]
+    [goatmud.web.controllers.health :as health]
+    [goatmud.web.middleware.exception :as exception]
+    [goatmud.web.middleware.formats :as formats]
     [integrant.core :as ig]
     [reitit.coercion.malli :as malli]
     [reitit.ring.coercion :as coercion]
@@ -14,7 +14,7 @@
 (defn api-routes [_opts]
   [["/swagger.json"
     {:get {:no-doc  true
-           :swagger {:info {:title "goatmud.asdf API"}}
+           :swagger {:info {:title "goatmud API"}}
            :handler (swagger/create-swagger-handler)}}]
    ["/health"
     {:get health/healthcheck!}]])

@@ -1,4 +1,4 @@
-(ns goatmud.asdf.web.controllers.health
+(ns goatmud.web.controllers.health
   (:require
     [ring.util.http-response :as http-response])
   (:import

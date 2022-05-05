@@ -1,16 +1,16 @@
-(ns goatmud.asdf.core
+(ns goatmud.core
   (:require
     [clojure.tools.logging :as log]
     [integrant.core :as ig]
-    [goatmud.asdf.config :as config]
-    [goatmud.asdf.env :refer [defaults]]
+    [goatmud.config :as config]
+    [goatmud.env :refer [defaults]]
 
     ;; Edges       
     [kit.edge.server.undertow]
-    [goatmud.asdf.web.handler]
+    [goatmud.web.handler]
 
     ;; Routes
-    [goatmud.asdf.web.routes.api]
+    [goatmud.web.routes.api]
     )
   (:gen-class))
 

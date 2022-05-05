@@ -11,7 +11,7 @@
     [integrant.repl.state :as state]
     [kit.api :as kit]
     [lambdaisland.classpath.watch-deps :as watch-deps]      ;; hot loading for deps
-    [goatmud.asdf.core :refer [start-app]]))
+    [goatmud.core :refer [start-app]]))
 
 ;; uncomment to enable hot loading for deps
 (watch-deps/start! {:aliases [:dev :test]})
@@ -23,13 +23,13 @@
 (defn dev-prep!
   []
   (integrant.repl/set-prep! (fn []
-                              (-> (goatmud.asdf.config/system-config {:profile :dev})
+                              (-> (goatmud.config/system-config {:profile :dev})
                                   (ig/prep)))))
 
 (defn test-prep!
   []
   (integrant.repl/set-prep! (fn []
-                              (-> (goatmud.asdf.config/system-config {:profile :test})
+                              (-> (goatmud.config/system-config {:profile :test})
                                   (ig/prep)))))
 
 ;; Can change this to test-prep! if want to run tests as the test profile in your repl

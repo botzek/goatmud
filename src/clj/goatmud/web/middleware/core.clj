@@ -1,6 +1,6 @@
-(ns goatmud.asdf.web.middleware.core
+(ns goatmud.web.middleware.core
   (:require
-    [goatmud.asdf.env :as env]
+    [goatmud.env :as env]
     [ring.middleware.defaults :as defaults]
     [ring.middleware.session.cookie :as cookie] ))
 

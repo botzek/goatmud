@@ -1,4 +1,4 @@
-(ns goatmud.asdf.env
+(ns goatmud.env
   (:require [clojure.tools.logging :as log]))
 
 (def defaults

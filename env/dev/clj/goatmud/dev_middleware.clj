@@ -1,4 +1,4 @@
-(ns goatmud.asdf.dev-middleware)
+(ns goatmud.dev-middleware)
 
 (defn wrap-dev [handler _opts]
   (-> handler

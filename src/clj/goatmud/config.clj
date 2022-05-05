@@ -1,4 +1,4 @@
-(ns goatmud.asdf.config
+(ns goatmud.config
   (:require
     [kit.config :as config]))
 
