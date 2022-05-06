@@ -2,7 +2,7 @@
   (:require [clojure.string :as string]
             [clojure.tools.build.api :as b]
             [deps-deploy.deps-deploy :as deploy] 
-    [clojure.java.shell :refer [sh]])) 
+            [clojure.java.shell :refer [sh]])) 
 
  (defn build-cljs [] (println "npx shadow-cljs release app...") (let [{:keys [exit], :as s} (sh "npx" "shadow-cljs" "release" "app")] (when-not (zero? exit) (throw (ex-info "could not compile cljs" s))) (sh "cp" "-r" "target/classes/cljsbuild/public" "target/classes/")))
 
