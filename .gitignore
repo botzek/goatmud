@@ -5,6 +5,7 @@ hs_err_pid*.log
 .cpcache/
 target
 log/
+modules/
 
 # IntelliJ
 *.iml
@@ -12,3 +13,7 @@ log/
 
 # clj-kondo
 .clj-kondo/.cache/
+
+# cljs
+.shadow-cljs
+node_modules
