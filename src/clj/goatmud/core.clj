@@ -11,7 +11,8 @@
 
     ;; Routes
     [goatmud.web.routes.api]
-    )
+    
+    [goatmud.web.routes.pages])
   (:gen-class))
 
 ;; log uncaught exceptions in threads
