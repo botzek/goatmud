@@ -8,10 +8,7 @@
 (rf/reg-event-fx
  :app/initialize
  (fn [_ _]
-   (let [socket (ws/make-socket!)
-         router (ws/make-router! socket)]
-     {:db {:ws/socket socket
-           :ws/router router}})))
+   {:dispatch [:ws/initialize]}))
 
 (rf/reg-event-fx
  :message/send!
@@ -35,6 +32,7 @@
 (defn home-page []
   [:div
    [:h2 "Welcome to Reagent!"]
+   [ws/connecting-dialog]
    [message-form]])
 
 ;; -------------------------
