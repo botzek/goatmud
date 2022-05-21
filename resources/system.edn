@@ -38,8 +38,22 @@
  {:base-path "/api"
   :env #ig/ref :system/env}
 
+ :reitit.routes/ws
+ {:base-path "/ws"
+  :socket #ig/ref :ws/socket
+  :env #ig/ref :system/env}
+
  :router/routes
  {:routes #ig/refset :reitit/routes}
+
+ :ws/router
+ {:socket #ig/ref :ws/socket}
+
+ :ws/ping
+ {:socket #ig/ref :ws/socket}
+
+ :ws/socket
+ {}
 
  :router/core
  {:routes #ig/ref :router/routes}

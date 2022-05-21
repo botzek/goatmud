@@ -20,7 +20,9 @@
            io.github.kit-clj/kit-core {:mvn/version "1.0.1"}
            io.github.kit-clj/kit-undertow {:mvn/version "1.0.1"}
            selmer/selmer {:mvn/version "1.12.50"}
-           luminus/ring-ttl-session {:mvn/version "0.3.3"}}
+           luminus/ring-ttl-session {:mvn/version "0.3.3"}
+
+           com.taoensso/sente {:mvn/version "1.16.2"}}
  :aliases {:build {:deps {io.github.clojure/tools.build {:git/sha "e3e3532"
                                                          :git/tag "v0.8.0" :git/url "https://github.com/clojure/tools.build.git"}
                           slipset/deps-deploy {:mvn/version "0.2.0"}

@@ -11,7 +11,7 @@
 
     ;; Routes
     [goatmud.web.routes.api]
-    
+    [goatmud.web.routes.websocket]
     [goatmud.web.routes.pages])
   (:gen-class))
 
