@@ -8,14 +8,18 @@
     [reitit.ring.coercion :as coercion]
     [reitit.ring.middleware.muuntaja :as muuntaja]
     [reitit.ring.middleware.parameters :as parameters]
-    [reitit.swagger :as swagger]))
+    [reitit.swagger :as swagger]
+    [reitit.swagger-ui :as swagger-ui]))
 
 ;; Routes
 (defn api-routes [_opts]
-  [["/swagger.json"
-    {:get {:no-doc  true
-           :swagger {:info {:title "goatmud API"}}
-           :handler (swagger/create-swagger-handler)}}]
+  [["" {:no-doc true
+        :swagger {:info {:title "GoatMUD API"}}}
+    ["/swagger.json"
+     {:get (swagger/create-swagger-handler)}]
+    ["/swagger-ui*"
+     {:get (swagger-ui/create-swagger-ui-handler
+           {:url "/api/swagger.json"})}]]
    ["/health"
     {:get health/healthcheck!}]])
 
