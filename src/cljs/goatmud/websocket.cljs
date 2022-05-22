@@ -54,8 +54,8 @@
    (let [{:keys [state] :as socket} (make-socket!)
          router (make-router! socket)]
      {:db {:ws/socket socket
-           :ws/router router
-           :ws/connected? (:open? @state)}})))
+           :ws/router router}
+      :dispatch [:ws/update-connected!]})))
 
 (rf/reg-event-db
  :ws/update-connected!
