@@ -1,4 +1,4 @@
-{:paths   ["src/clj"
+{:paths   ["src/clj" "src/cljc"
            "resources" "src/cljs"]
 
  :deps    {org.clojure/clojure {:mvn/version "1.11.1"}
@@ -15,6 +15,9 @@
            luminus-transit/luminus-transit {:mvn/version "0.1.5"
                                             :exclusions [com.cognitect/transit-clj]}
            metosin/muuntaja {:mvn/version "0.6.8"}
+
+           ;; support for malli custom function validators
+           org.babashka/sci {:mvn/version "0.3.5"}
 
            ;; kit Libs
            io.github.kit-clj/kit-core {:mvn/version "1.0.1"}

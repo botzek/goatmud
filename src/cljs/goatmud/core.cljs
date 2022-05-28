@@ -3,7 +3,9 @@
       [reagent.core :as r]
       [reagent.dom :as d]
       [re-frame.core :as rf]
-      [goatmud.websocket :as ws]))
+      [goatmud.websocket :as ws]
+      [goatmud.ajax :as ajax]
+      [goatmud.account :as account]))
 
 (rf/reg-event-fx
  :app/initialize
@@ -31,9 +33,9 @@
 
 (defn home-page []
   [:div
-   [:h2 "Welcome to Reagent!"]
    [ws/connecting-dialog]
-   [message-form]])
+   [account/create-account-dialog]
+   #_[message-form]])
 
 ;; -------------------------
 ;; Initialize app

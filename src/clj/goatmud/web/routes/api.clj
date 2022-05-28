@@ -1,6 +1,7 @@
 (ns goatmud.web.routes.api
   (:require
     [goatmud.web.controllers.health :as health]
+    [goatmud.account.controllers :as account]
     [goatmud.web.middleware.exception :as exception]
     [goatmud.web.middleware.formats :as formats]
     [integrant.core :as ig]
@@ -20,6 +21,8 @@
     ["/swagger-ui*"
      {:get (swagger-ui/create-swagger-ui-handler
            {:url "/api/swagger.json"})}]]
+   ["/accounts"
+    {:post account/create-account}]
    ["/health"
     {:get health/healthcheck!}]])
 
