@@ -1,5 +1,5 @@
 (ns goatmud.account.schema
-  (:require [goatmud.schema :as s]))
+  (:require [goatmud.common.schema :as s]))
 
 (def account-username-schema
   [:string {:min 3 :max 15}])

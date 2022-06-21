@@ -1,4 +1,4 @@
-(ns goatmud.schema)
+(ns goatmud.common.schema)
 
 (def username-schema
   [:string {:min 8 :max 50}])

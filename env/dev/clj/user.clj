@@ -11,7 +11,7 @@
     [integrant.repl.state :as state]
     [kit.api :as kit]
     [lambdaisland.classpath.watch-deps :as watch-deps]      ;; hot loading for deps
-    [goatmud.core :refer [start-app]]))
+    [goatmud.server :refer [start-app]]))
 
 ;; uncomment to enable hot loading for deps
 (watch-deps/start! {:aliases [:dev :test]})

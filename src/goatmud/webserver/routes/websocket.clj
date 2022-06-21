@@ -1,8 +1,8 @@
-(ns goatmud.web.routes.websocket
+(ns goatmud.webserver.routes.websocket
   (:require
    [clojure.tools.logging :as log]
-   [goatmud.web.middleware.exception :as exception]
-   [goatmud.web.middleware.formats :as formats]
+   [goatmud.webserver.middleware.exception :as exception]
+   [goatmud.webserver.middleware.formats :as formats]
    [ring.util.http-response :as http-response]
    [integrant.core :as ig]
    [clojure.core.async :as async  :refer (<! <!! >! >!! put! chan go go-loop alt!)]

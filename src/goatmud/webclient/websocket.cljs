@@ -1,4 +1,4 @@
-(ns goatmud.websocket
+(ns goatmud.webclient.websocket
   (:require
    [taoensso.sente :as sente]
    [re-frame.core :as rf]))

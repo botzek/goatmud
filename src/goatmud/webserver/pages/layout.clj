@@ -1,4 +1,4 @@
-(ns goatmud.web.pages.layout
+(ns goatmud.webserver.pages.layout
   (:require
    [clojure.java.io]
    [selmer.parser :as parser]

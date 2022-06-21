@@ -1,4 +1,4 @@
-(ns goatmud.ajax
+(ns goatmud.webclient.ajax
   (:require [ajax.core :refer [GET POST]]
             [re-frame.core :as rf]))
 

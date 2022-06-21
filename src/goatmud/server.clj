@@ -1,4 +1,4 @@
-(ns goatmud.core
+(ns goatmud.server
   (:require
     [clojure.tools.logging :as log]
     [integrant.core :as ig]
@@ -7,12 +7,12 @@
 
     ;; Edges       
     [kit.edge.server.undertow]
-    [goatmud.web.handler]
+    [goatmud.webserver.handler]
 
     ;; Routes
-    [goatmud.web.routes.api]
-    [goatmud.web.routes.websocket]
-    [goatmud.web.routes.pages])
+    [goatmud.webserver.routes.api]
+    [goatmud.webserver.routes.websocket]
+    [goatmud.webserver.routes.pages])
   (:gen-class))
 
 ;; log uncaught exceptions in threads

@@ -1,9 +1,9 @@
-(ns goatmud.web.routes.api
+(ns goatmud.webserver.routes.api
   (:require
-    [goatmud.web.controllers.health :as health]
+    [goatmud.webserver.controllers.health :as health]
     [goatmud.account.controllers :as account]
-    [goatmud.web.middleware.exception :as exception]
-    [goatmud.web.middleware.formats :as formats]
+    [goatmud.webserver.middleware.exception :as exception]
+    [goatmud.webserver.middleware.formats :as formats]
     [integrant.core :as ig]
     [reitit.coercion.malli :as malli]
     [reitit.ring.coercion :as coercion]

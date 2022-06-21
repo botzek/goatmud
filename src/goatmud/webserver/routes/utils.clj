@@ -1,4 +1,4 @@
-(ns goatmud.web.routes.utils)
+(ns goatmud.webserver.routes.utils)
 
 (def route-data-path [:reitit.core/match :data])
 

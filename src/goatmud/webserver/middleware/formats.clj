@@ -1,4 +1,4 @@
-(ns goatmud.web.middleware.formats
+(ns goatmud.webserver.middleware.formats
   (:require
     [luminus-transit.time :as time]
     [muuntaja.core :as m]))

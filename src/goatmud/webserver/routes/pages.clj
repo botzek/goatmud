@@ -1,7 +1,7 @@
-(ns goatmud.web.routes.pages
+(ns goatmud.webserver.routes.pages
   (:require
-    [goatmud.web.middleware.exception :as exception]
-    [goatmud.web.pages.layout :as layout]
+    [goatmud.webserver.middleware.exception :as exception]
+    [goatmud.webserver.pages.layout :as layout]
     [integrant.core :as ig]
     [reitit.ring.middleware.muuntaja :as muuntaja]
     [reitit.ring.middleware.parameters :as parameters]

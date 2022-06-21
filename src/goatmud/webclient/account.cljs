@@ -1,9 +1,9 @@
-(ns goatmud.account
+(ns goatmud.webclient.account
   (:require [reagent.core :as r]
             [re-frame.core :as rf]
             [clojure.string :as string]
             [goatmud.account.web-schema :refer [create-account-schema]]
-            [goatmud.validation :refer [validate-with]]))
+            [goatmud.common.validation :refer [validate-with]]))
 
 (rf/reg-event-fx
  :account/create-account

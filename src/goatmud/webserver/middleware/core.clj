@@ -1,4 +1,4 @@
-(ns goatmud.web.middleware.core
+(ns goatmud.webserver.middleware.core
   (:require
     [goatmud.env :as env]
     [ring.middleware.defaults :as defaults]

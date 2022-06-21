@@ -1,11 +1,11 @@
-(ns goatmud.core
+(ns goatmud.webclient.core
     (:require
       [reagent.core :as r]
       [reagent.dom :as d]
       [re-frame.core :as rf]
-      [goatmud.websocket :as ws]
-      [goatmud.ajax :as ajax]
-      [goatmud.account :as account]))
+      [goatmud.webclient.websocket :as ws]
+      [goatmud.webclient.ajax :as ajax]
+      [goatmud.webclient.account :as account]))
 
 (rf/reg-event-fx
  :app/initialize

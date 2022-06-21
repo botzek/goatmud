@@ -1,4 +1,4 @@
-(ns goatmud.validation
+(ns goatmud.common.validation
   (:require [malli.core :as m]
             [malli.error :as me]))
 
