@@ -3,6 +3,9 @@
            :test :test
            :prod :prod}
 
+ :account/core
+ {:filename "db/accounts.edn"}
+
  :server/http
  {:port #long #or [#env PORT 3000]
   :host #or [#env HTTP_HOST "0.0.0.0"]

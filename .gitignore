@@ -17,3 +17,5 @@ modules/
 # cljs
 .shadow-cljs
 node_modules
+
+db/

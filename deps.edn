@@ -25,6 +25,8 @@
            selmer/selmer {:mvn/version "1.12.50"}
            luminus/ring-ttl-session {:mvn/version "0.3.3"}
 
+           buddy/buddy-hashers {:mvn/version "1.8.158"}
+
            com.taoensso/sente {:mvn/version "1.16.2"}}
  :aliases {:build {:deps {io.github.clojure/tools.build {:git/sha "e3e3532"
                                                          :git/tag "v0.8.0" :git/url "https://github.com/clojure/tools.build.git"}
