@@ -13,3 +13,8 @@
     '(fn [{:keys [password confirm-password] :as afds} bfds]
        (or (empty? confirm-password)
            (= password confirm-password)))]])
+
+(def login-schema
+  [:map
+   [:username s/account-username-schema]
+   [:password s/account-password-schema]])

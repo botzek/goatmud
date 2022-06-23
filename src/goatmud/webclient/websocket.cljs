@@ -50,11 +50,10 @@
 
 (rf/reg-event-fx
  :ws/initialize
- (fn [_ _]
+ (fn [{:keys [db]} _]
    (let [{:keys [state] :as socket} (make-socket!)
          router (make-router! socket)]
-     {:db {:ws/socket socket
-           :ws/router router}
+     {:db (assoc db :ws/socket socket :ws/router router)
       :dispatch [:ws/update-connected!]})))
 
 (rf/reg-event-db

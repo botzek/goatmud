@@ -6,6 +6,23 @@
             [integrant.core :as ig]
             [goatmud.account.schema :as s]))
 
+
+;; Pure data & functions up here
+
+(defn make-account
+  [id username email password]
+  {:id id
+   :username username
+   :email email
+   :password-hash (hashers/derive password)})
+
+(defn passes-auth?
+  [account password]
+  (hashers/verify password (:password-hash account)))
+
+
+;; Database stuff
+
 (defonce db (atom nil))
 (defonce db-file (agent nil))
 
@@ -37,6 +54,9 @@
     (send db-file (fn [_] nil))
     (reset! db nil)))
 
+
+;; Services - impure functions, makes use of the db
+
 (defn create-account!
   [username email password]
   (let [result (atom nil)]
@@ -50,10 +70,29 @@
 
                   true
                   (let [account-id (inc top-account-id)
-                        password-hash (hashers/derive password)
-                        account {:id account-id :username username :email email :password-hash password-hash}
-                        accounts (assoc accounts account-id account)]
+                        account (make-account account-id username email password)
+                        accounts (assoc accounts account-id account)
+                        next-version (inc version)]
                     (reset! result account)
-                    (assoc db :top-account-id account-id :accounts accounts :version (inc version))))))
-    (log/info "Created account" (select-keys @result [:id :username :email]))
+                    (assoc db :top-account-id account-id :accounts accounts :version next-version)))))
+    (log/info "Create Account - Success - " (select-keys @result [:id :username :email]))
     @result))
+
+(defn find-accounts
+  [{:keys [username email]}]
+  (filter #(and (or (nil? username) (= username (:username %)))
+                (or (nil? email) (= email (:email %))))
+          (vals (:accounts @db))))
+
+(defn auth-username
+  "Attempts to auth a username/password.
+
+  Returns the account when auth is successful, nil when not."
+  [username password]
+  (if-let [account (first (find-accounts {:username username}))]
+    (if (passes-auth? account password)
+      (do
+        (log/info (format "Auth Username - Success - username [%s]", username))
+        (select-keys account [:id :username :email]))
+      (log/info (format "Auth Username - Failed - username [%s]: password mismatch", username)))
+    (log/info (format "Auth Username - Failed - username [%s]: username does not exist", username))))

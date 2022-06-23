@@ -23,6 +23,8 @@
            {:url "/api/swagger.json"})}]]
    ["/accounts"
     {:post account/create-account}]
+   ["/login"
+    {:post account/login}]
    ["/health"
     {:get health/healthcheck!}]])
 

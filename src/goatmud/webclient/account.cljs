@@ -2,13 +2,13 @@
   (:require [reagent.core :as r]
             [re-frame.core :as rf]
             [clojure.string :as string]
-            [goatmud.account.web-schema :refer [create-account-schema]]
+            [goatmud.account.web-schema :as account.web-schema]
             [goatmud.common.validation :refer [validate-with]]))
 
 (rf/reg-event-fx
  :account/create-account
  (fn [{:keys [db]} [_ fields errors]]
-   (if-let [e (validate-with @fields create-account-schema)]
+   (if-let [e (validate-with @fields account.web-schema/create-account-schema)]
      (do
        (reset! errors e)
        nil)
@@ -20,7 +20,26 @@
                                      (reset! errors {:? "request failed"})))
                   :success-handler (fn [_]
                                      (reset! errors nil)
-                                     (reset! fields nil))}})))
+                                     (reset! fields nil)
+                                     (rf/dispatch [:change-screen :account-home]))}})))
+
+(rf/reg-event-fx
+ :account/login
+ (fn [{:keys [db]} [_ fields errors]]
+   (if-let [e (validate-with @fields account.web-schema/login-schema)]
+     (do
+       (reset! errors e)
+       nil)
+     {:ajax/post {:url "/api/login"
+                  :params @fields
+                  :error-handler (fn [resp]
+                                   (if-let [e (-> resp :response :errors)]
+                                     (reset! errors e)
+                                     (reset! errors {:? "request failed"})))
+                  :success-handler (fn [_]
+                                     (reset! errors nil)
+                                     (reset! fields nil)
+                                     (rf/dispatch [:change-screen :account-home]))}})))
 
 (defn errors-component [errors id]
   (when-let [error (id @errors)]
@@ -60,4 +79,28 @@
       [errors-component errors :confirm-password]]
      [:input {:type :submit
               :value "Create Account"}]
+     [errors-component errors :?]]))
+
+(defn login-dialog
+  []
+  (r/with-let [fields (r/atom {})
+               errors (r/atom nil)]
+    [:form
+     {:on-submit (fn on-submit[e]
+                   (rf/dispatch [:account/login fields errors])
+                   (.preventDefault e))}
+     [:div
+      [:div.label "Username"]
+      [:div [:input {:type :text
+                     :value (:username @fields)
+                     :on-change #(swap! fields assoc :username (.. % -target -value))}]]
+      [errors-component errors :username]]
+     [:div
+      [:div.label "Password"]
+      [:div [:input {:type :password
+                     :value (:password @fields)
+                     :on-change #(swap! fields assoc :password (.. % -target -value))}]]
+      [errors-component errors :password]]
+     [:input {:type :submit
+              :value "Login"}]
      [errors-component errors :?]]))

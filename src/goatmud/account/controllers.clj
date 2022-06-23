@@ -21,3 +21,18 @@
                 400 {:body {:message string? :errors map?}}
                 500 {:errors map?}}}
    :handler create-account})
+
+(defn login
+  [{{:keys [username password] :as params} :body-params}]
+  (try
+    (if-let [account (core/auth-username username password)]
+      (response/ok {:data (select-keys account [:username :id]) :message "Login successful."})
+      (response/bad-request {:errors {:username ["Username or password incorrect."] }}))))
+
+(def login-spec
+  {:parameters
+   {:body schema/login-schema
+    :responses {200 {:body {:message string? :data map?}}
+                400 {:body {:message string? :errors map?}}
+                500 {:errors map?}}}
+   :handler login})
